@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+test_django-helpscout
+------------
+
+Tests for `django-helpscout` helpers module.
+"""
+
+import hmac, hashlib, base64
+from django.utils import unittest
+from mock import MagicMock
+from django_helpscout import helpers, settings
+
+
+class TestHelpscoutHelper(unittest.TestCase):
+    def setUp(self):
+        settings.HELPSCOUT_SECRET = '1234'
+
+    def test_helpscout_request(self):
+        # Compute signature for request body
+        request_body = 'Request body'
+        dig = hmac.new(settings.HELPSCOUT_SECRET, msg=request_body,
+                       digestmod=hashlib.sha1).digest()
+        computed_sig = base64.b64encode(dig).decode()
+
+        # Valid signature should return decorated function
+        request = MagicMock()
+        request.META = {'X-Helpscout-Signature': computed_sig}
+        request.body = request_body
+
+        decorator = helpers.helpscout_request(lambda x: True)
+        self.assertTrue(decorator(request))
+
+        # Invalid signature should return a response code of 401
+        request.META['X-Helpscout-Signature'] = '234'
+        response = decorator(request)
+        self.assertEquals(401, response.status_code)
