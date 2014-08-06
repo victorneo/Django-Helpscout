@@ -7,7 +7,7 @@ from django_helpscout import settings
 
 
 try:
-    # compare_digest is only available in Python 2.7.7
+    # compare_digest is only available in Python >= 2.7.7
     from hmac import compare_digest
 except ImportError:
     # Use unsafe String comparison function for Python < 2.7.7
@@ -21,7 +21,7 @@ def helpscout_request(f):
     """
     @wraps(f)
     def decorated_function(request, *args, **kwargs):
-        helpscout_sig = request.META.get('X-Helpscout-Signature')
+        helpscout_sig = unicode(request.META.get('X-Helpscout-Signature'))
         secret = settings.HELPSCOUT_SECRET
 
         dig = hmac.new(secret, msg=request.body,
