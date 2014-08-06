@@ -41,8 +41,8 @@ Once installed, add ``django_helpscout`` to your ``INSTALLED_APPS``::
 Getting Started
 ----------------
 
- A Django view is provided to make it easy for you to get started. First, add
- the view to your ``urls.py``::
+A Django view is provided to make it easy for you to get started. First, add
+the view to your ``urls.py``::
 
     from django_helpscout.views import helpscout_user
 
@@ -72,8 +72,11 @@ In your templates folder, create the following structure::
 
 Details on the two templates:
 
-- 404.html: Used when a user with the given email address is not found
-- helpscout.html: Used when a user is found
+``404.html``
+  Used when a user with the given email address is not found
+
+``helpscout.html``
+  Used when a user is found
 
 By adding your own templates and effectively overriding the library's
 built-in templates, you can customize the output to suit your needs.
