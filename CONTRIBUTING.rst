@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/victorneo/django-helpscout/issues.
+Report bugs at https://github.com/victorneo/Django-Helpscout/issues.
 
 If you are reporting a bug, please include:
 
@@ -36,14 +36,14 @@ is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-django-helpscout could always use more documentation, whether as part of the 
+Django-Helpscout could always use more documentation, whether as part of the 
 official django-helpscout docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/victorneo/django-helpscout/issues.
+The best way to send feedback is to file an issue at https://github.com/victorneo/Django-Helpscout/issues.
 
 If you are proposing a feature:
 
@@ -55,12 +55,12 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `django-helpscout` for local development.
+Ready to contribute? Here's how to set up `Django-Helpscout` for local development.
 
-1. Fork the `django-helpscout` repo on GitHub.
+1. Fork the `Django-Helpscout` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/django-helpscout.git
+    $ git clone git@github.com:your_name_here/Django-Helpscout.git django-helpscout
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
@@ -100,8 +100,8 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 2.6, 2.7, and 3.3, and for PyPy. Check 
-   https://travis-ci.org/victorneo/django-helpscout/pull_requests
+3. The pull request should work for Python 2.6, 2.7. Check 
+   https://travis-ci.org/victorneo/Django-Helpscout/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
