@@ -41,7 +41,7 @@ setup(
     zip_safe=False,
     keywords='Django-Helpscout, Django, Help Scout',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
@@ -49,5 +49,6 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
     ],
 )
