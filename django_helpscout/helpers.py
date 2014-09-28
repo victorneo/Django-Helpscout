@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django_helpscout import settings
 
 
-
 try:
     # compare_digest is only available in Python >= 2.7.7
     from hmac import compare_digest
@@ -21,13 +20,16 @@ def helpscout_request(f):
     """
     @wraps(f)
     def decorated_function(request, *args, **kwargs):
-        helpscout_sig = b(request.META.get('X-Helpscout-Signature'))
+        helpscout_sig = request.META.get('X-Helpscout-Signature')
         secret = b(settings.HELPSCOUT_SECRET)
         request_body = b(request.body)
 
         h = hmac.new(secret, msg=request_body, digestmod=hashlib.sha1)
         dig = h.digest()
         computed_sig = b(base64.b64encode(dig).decode())
+
+        if type(helpscout_sig) == str:
+            helpscout_sig = bytes(helpscout_sig, 'utf-8')
 
         if not compare_digest(computed_sig, helpscout_sig):
             return HttpResponse(status=401)

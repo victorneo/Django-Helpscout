@@ -25,7 +25,7 @@ class TestHelpscoutHelper(unittest.TestCase):
         secret = settings.HELPSCOUT_SECRET
         dig = hmac.new(b(secret), msg=b(request_body),
                        digestmod=hashlib.sha1).digest()
-        computed_sig = base64.b64encode(dig).decode()
+        computed_sig = b(base64.b64encode(dig).decode())
 
         # Valid signature should return decorated function
         request = MagicMock()
@@ -36,6 +36,6 @@ class TestHelpscoutHelper(unittest.TestCase):
         self.assertTrue(decorator(request))
 
         # Invalid signature should return a response code of 401
-        request.META['X-Helpscout-Signature'] = '234'
+        request.META['X-Helpscout-Signature'] = u'234'
         response = decorator(request)
         self.assertEquals(401, response.status_code)
