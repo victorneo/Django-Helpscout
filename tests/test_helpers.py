@@ -10,6 +10,7 @@ Tests for `django-helpscout` helpers module.
 
 import hmac, hashlib, base64
 from django.utils import unittest
+from six import b
 from mock import MagicMock
 from django_helpscout import helpers, settings
 
@@ -21,7 +22,8 @@ class TestHelpscoutHelper(unittest.TestCase):
     def test_helpscout_request(self):
         # Compute signature for request body
         request_body = 'Request body'
-        dig = hmac.new(settings.HELPSCOUT_SECRET, msg=request_body,
+        secret = settings.HELPSCOUT_SECRET
+        dig = hmac.new(b(secret), msg=b(request_body),
                        digestmod=hashlib.sha1).digest()
         computed_sig = base64.b64encode(dig).decode()
 
