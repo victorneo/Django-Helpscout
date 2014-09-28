@@ -1,7 +1,6 @@
 from functools import wraps
-import hmac
-import hashlib
-import base64
+import base64, hmac, hashlib
+from six import b
 from django.http import HttpResponse
 from django_helpscout import settings
 
@@ -21,12 +20,16 @@ def helpscout_request(f):
     """
     @wraps(f)
     def decorated_function(request, *args, **kwargs):
-        helpscout_sig = unicode(request.META.get('X-Helpscout-Signature'))
-        secret = settings.HELPSCOUT_SECRET
+        helpscout_sig = request.META.get('X-Helpscout-Signature')
+        secret = b(settings.HELPSCOUT_SECRET)
+        request_body = b(request.body)
 
-        dig = hmac.new(secret, msg=request.body,
-                       digestmod=hashlib.sha1).digest()
-        computed_sig = base64.b64encode(dig).decode()
+        h = hmac.new(secret, msg=request_body, digestmod=hashlib.sha1)
+        dig = h.digest()
+        computed_sig = b(base64.b64encode(dig).decode())
+
+        if type(helpscout_sig) == str:
+            helpscout_sig = bytes(helpscout_sig, 'utf-8')
 
         if not compare_digest(computed_sig, helpscout_sig):
             return HttpResponse(status=401)
