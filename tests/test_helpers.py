@@ -29,13 +29,13 @@ class TestHelpscoutHelper(unittest.TestCase):
 
         # Valid signature should return decorated function
         request = MagicMock()
-        request.META = {'X-Helpscout-Signature': computed_sig}
+        request.META = {'HTTP_X_HELPSCOUT_SIGNATURE': computed_sig}
         request.body = request_body
 
         decorator = helpers.helpscout_request(lambda x: True)
         self.assertTrue(decorator(request))
 
         # Invalid signature should return a response code of 401
-        request.META['X-Helpscout-Signature'] = u'234'
+        request.META['HTTP_X_HELPSCOUT_SIGNATURE'] = u'234'
         response = decorator(request)
         self.assertEquals(401, response.status_code)
