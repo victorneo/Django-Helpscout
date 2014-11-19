@@ -20,7 +20,7 @@ def helpscout_request(f):
     """
     @wraps(f)
     def decorated_function(request, *args, **kwargs):
-        helpscout_sig = request.META.get('X-Helpscout-Signature')
+        helpscout_sig = request.META.get('HTTP_X_HELPSCOUT_SIGNATURE')
         secret = b(settings.HELPSCOUT_SECRET)
         request_body = b(request.body)
 
