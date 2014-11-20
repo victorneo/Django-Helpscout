@@ -36,6 +36,8 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
+        'django',
+        'six',
     ],
     license="Apache License V2",
     zip_safe=False,
