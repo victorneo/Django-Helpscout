@@ -5,7 +5,7 @@ Django-Helpscout
 .. image:: https://travis-ci.org/victorneo/Django-Helpscout.svg?branch=master
     :target: https://travis-ci.org/victorneo/Django-Helpscout
 
-.. image:: https://coveralls.io/repos/victorneo/Django-Helpscout/badge.png?branch=master
+.. image:: https://img.shields.io/coveralls/victorneo/Django-Helpscout.svg
     :target: https://coveralls.io/r/victorneo/Django-Helpscout?branch=master 
 
 Help Scout integration for Django.
