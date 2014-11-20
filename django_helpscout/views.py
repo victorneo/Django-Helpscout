@@ -16,9 +16,11 @@ def helpscout_user(request, template_name='django_helpscout/helpscout.html',
                    template_name_404='django_helpscout/404.html'):
     """
 Displays a user's information for Help Scout's custom app integration.
+
 Optional Arguments:
-``template_name``: name of the template to use.
-``template_name_404``: name of the template to use when user does not exist
+
+- ``template_name``: name of the template to use.
+- ``template_name_404``: name of the template to use when user does not exist
 """
     email = json.loads(request.body)['customer']['email']
 

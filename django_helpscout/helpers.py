@@ -15,8 +15,9 @@ except ImportError:
 
 def helpscout_request(f):
     """Determines if a incoming request if from Help Scout using
-    X-HelpScout-Signature. Returns HTTP 401 if signature is
-    invalid.
+    X-HelpScout-Signature.
+
+    Returns HTTP 401 if signature is invalid.
     """
     @wraps(f)
     def decorated_function(request, *args, **kwargs):

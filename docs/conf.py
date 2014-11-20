@@ -252,3 +252,10 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+from django.conf import settings
+import os, sys
+
+sys.path.insert(0, os.getcwd())
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
