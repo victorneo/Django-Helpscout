@@ -3,6 +3,11 @@
 History
 -------
 
+0.6.2 (2014-12-04)
+++++++++++++++++++
+
+* Updated documentation with previously missing configuration option.
+
 0.6.1 (2014-11-20)
 ++++++++++++++++++
 
