@@ -13,14 +13,14 @@ Help Scout integration for Django.
 Introduction
 -------------
 
-If you are using Help Scout to handle support tickets from your users for your Django
-web application, you can use Help Scout's custom app feature to provide information
-on the user, such as the following:
+If you are using Help Scout to handle support tickets for your Django
+web application, you can use Help Scout's custom app feature to provide
+additional information on the user, such as the following:
 
 .. image:: https://raw.githubusercontent.com/victorneo/Django-Helpscout/master/helpscout_customapp.png
 
-This project provides a Django app which allows you to integrate Custom App into your
-Django web application and easily customize the output HTML.
+This project provides a Django app which allows you to integrate Help Scout
+Custom App into your Django web application and easily customize the output.
 
 Installation
 -------------
@@ -37,6 +37,10 @@ Once installed, add ``django_helpscout`` to your ``INSTALLED_APPS``::
         ...,
     )
 
+Add Help Scout's secret key to your settings file::
+
+    HELPSCOUT_SECRET = '<helpscout custom app secret key>'
+
 
 Getting Started
 ----------------
@@ -52,16 +56,16 @@ the view to your ``urls.py``::
     )
 
 Once done, deploy your web application to production and point your
-Help Scout custom app URL to the url you have configured above and
-you should see a simple HTML output on Help Scout with the user's
-username and date joined.
+Help Scout Custom App URL to the url you have configured above and
+you should see a simple HTML output on the side bar of a support ticket with
+the user's username and join date.
 
 Customizing the HTML Output
 ---------------------------
 
-You will most likely want to customize the HTML output to add in
-additional information related to the user. This library provides
-an easy way for you to override the templates that are used.
+You will want to customize the HTML output to add in additional information
+related to the user. You can do so by overriding the templates that are
+included.
 
 In your templates folder, create the following structure::
 
@@ -78,16 +82,16 @@ Details on the two templates:
 ``helpscout.html``
   Used when a user is found
 
-By adding your own templates and effectively overriding the library's
-built-in templates, you can customize the output to suit your needs.
+By overriding the library's built-in templates, you can customize the output to
+suit your needs.
 
 Further Customizations
 ----------------------
 
 You might want to use ``select_related`` to prefetch related models
-for a particular user, or you have complicated processing involved
+for a particular user, or you have additional data sources to query
 when loading a user. A helper decorator is available if you wish to
-use your own views.
+use your own view.
 
 The decorator helps you deal with verifying Help Scout's signature
 when a request is made from their side. You can use the decorator
