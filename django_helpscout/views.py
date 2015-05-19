@@ -3,6 +3,7 @@ import json
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django_helpscout.helpers import helpscout_request
 
@@ -12,6 +13,7 @@ User = get_user_model()
 
 @require_http_methods(['POST'])
 @helpscout_request
+@csrf_exempt
 def helpscout_user(request, template_name='django_helpscout/helpscout.html',
                    template_name_404='django_helpscout/404.html'):
     """
