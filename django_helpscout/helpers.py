@@ -1,6 +1,6 @@
 from functools import wraps
 import base64, hmac, hashlib
-from six import b
+from six import b, PY3
 from django.http import HttpResponse
 from django_helpscout import settings
 
@@ -29,7 +29,7 @@ def helpscout_request(f):
         dig = h.digest()
         computed_sig = b(base64.b64encode(dig).decode())
 
-        if type(helpscout_sig) == str:
+        if PY3 and type(helpscout_sig) == str:
             helpscout_sig = bytes(helpscout_sig, 'utf-8')
 
         if not compare_digest(computed_sig, helpscout_sig):
@@ -37,4 +37,3 @@ def helpscout_request(f):
 
         return f(request, *args, **kwargs)
     return decorated_function
-
