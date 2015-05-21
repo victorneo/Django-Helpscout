@@ -3,6 +3,12 @@
 History
 -------
 
+0.6.3 (2015-05-21)
+++++++++++++++++++
+
+* Added csrf_exempt decorator to helpscout_user view.
+* Fixed failing bytes conversion on Python < 3 in helpscout_request decorator.
+
 0.6.2 (2014-12-04)
 ++++++++++++++++++
 
