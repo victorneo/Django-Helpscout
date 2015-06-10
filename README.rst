@@ -8,6 +8,12 @@ Django-Helpscout
 .. image:: https://img.shields.io/coveralls/victorneo/Django-Helpscout.svg
     :target: https://coveralls.io/r/victorneo/Django-Helpscout?branch=master 
 
+.. image:: https://img.shields.io/pypi/dw/Django-Helpscout.svg
+    :target: https://pypi.python.org/pypi/django-helpscout/
+
+.. image:: https://img.shields.io/pypi/v/Django-Helpscout.svg
+    :target: https://pypi.python.org/pypi/django-helpscout/
+
 Help Scout integration for Django.
 
 Introduction
@@ -108,7 +114,7 @@ in the following manner::
 License
 -------
 
-Copyright 2014 Victor Neo
+Copyright 2015 Victor Neo
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
