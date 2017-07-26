@@ -29,8 +29,11 @@ def helpscout_request(f):
         dig = h.digest()
         computed_sig = b(base64.b64encode(dig).decode())
 
-        if PY3 and type(helpscout_sig) == str:
-            helpscout_sig = bytes(helpscout_sig, 'utf-8')
+        if type(helpscout_sig) == str:
+            if PY3:
+                helpscout_sig = bytes(helpscout_sig, 'utf-8')
+            else:
+                helpscout_sig = unicode(helpscout_sig, 'utf-8')
 
         if not compare_digest(computed_sig, helpscout_sig):
             return HttpResponse(status=401)
